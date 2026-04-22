@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/eco_dark"
@@ -25,24 +26,87 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/login_card_bg"  android:orientation="vertical"
+        android:background="@drawable/login_card_bg"
+        android:orientation="vertical"
         android:padding="24dp">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            app:checkedButton="@+id/btnPersonal"
+            app:singleSelection="true">
+
+            <Button
+                android:id="@+id/btnPersonal"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personal"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnOrg"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Organization"
+                android:textColor="@android:color/white" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <EditText
+            android:id="@+id/etOrgId"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/input_field_bg"
+            android:hint="Organization ID"
+            android:paddingStart="16dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#80FFFFFF"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/spinnerRole"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/input_field_bg"
+            android:visibility="gone" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/input_field_bg"
+            android:hint="Email address"
+            android:inputType="textEmailAddress"
+            android:paddingStart="16dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#80FFFFFF"
+            android:id="@+id/etEmail"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:hint="Email address"
-            android:background="@android:color/transparent"
-            android:textColorHint="#80FFFFFF"
-            android:textColor="@android:color/white" />
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/input_field_bg"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingStart="16dp"
+            android:textColor="@android:color/white"
+            android:textColorHint="#80FFFFFF" />
 
         <Button
+            android:id="@+id/btnSignIn"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginTop="20dp"
             android:backgroundTint="@color/eco_green"
             android:text="Sign In"
-            android:textColor="@color/eco_dark" />
+            android:textAllCaps="false"
+            android:textColor="@color/eco_dark"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>
