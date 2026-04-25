@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Brand Colors (Teammate) -->
+    <color name="eco_dark">#0A1A14</color>
+    <color name="eco_green">#58B38D</color>
+    <color name="glass_white">#1AFFFFFF</color>
+
+    <!-- UI Colors (Devices Screen) -->
     <color name="screen_background">#F7F4EE</color>
     <color name="top_bar_background">#FFFDF9</color>
     <color name="bottom_bar_background">#FFFDF9</color>
