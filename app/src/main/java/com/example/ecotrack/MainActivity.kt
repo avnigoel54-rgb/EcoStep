@@ -2,60 +2,50 @@ package com.example.ecotrack
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.MainActivity as ComposeActivity
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Fixed: Use the correct sign-in layout
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_main)
 
-        val btnPersonal = findViewById<Button>(R.id.btnPersonal)
-        val btnOrg = findViewById<Button>(R.id.btnOrg)
-        val etEmail = findViewById<EditText>(R.id.etEmail)
-        val etOrgId = findViewById<EditText>(R.id.etOrgId)
-        val spinnerRole = findViewById<Spinner>(R.id.spinnerRole)
-        val btnSignIn = findViewById<Button>(R.id.btnSignIn)
+        // 1. Setup Device List
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewDevices)
+        val devices = listOf(
+            Device("Smart Fridge", "Kitchen", "1.2 kWh", true),
+            Device("AC Unit", "Living Room", "2.5 kWh", true),
+            Device("Electric Oven", "Kitchen", "0.0 kWh", false),
+            Device("Washing Machine", "Laundry", "0.8 kWh", true)
+        )
+        
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = DeviceAdapter(devices)
 
-        val roles = arrayOf("Admin", "Manager", "Viewer")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, roles)
-        spinnerRole.adapter = adapter
-
-        btnOrg.setOnClickListener {
-            etOrgId.visibility = View.VISIBLE
-            spinnerRole.visibility = View.VISIBLE
+        // 2. Setup Navigation
+        findViewById<TextView>(R.id.navHome).setOnClickListener {
+            startActivity(Intent(this, DashboardActivity::class.java))
         }
 
-        btnPersonal.setOnClickListener {
-            etOrgId.visibility = View.GONE
-            spinnerRole.visibility = View.GONE
+        findViewById<TextView>(R.id.navGoals).setOnClickListener {
+            startActivity(Intent(this, ComposeActivity::class.java))
+        }
+        
+        findViewById<TextView>(R.id.navTips).setOnClickListener {
+            startActivity(Intent(this, TipsActivity::class.java))
         }
 
-        btnSignIn.setOnClickListener {
-            val emailInput = etEmail.text.toString().trim()
-
-            // Gatekeeper: Check for @ and .com
-            if (emailInput.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
-
-                // Extract name (e.g., "ayesha" from ayesha@gmail.com)
-                val nameFromEmail = emailInput.substringBefore("@")
-
-                val intent = Intent(this, DashboardActivity::class.java)
-                intent.putExtra("USER_NAME", nameFromEmail)
-                startActivity(intent)
-
-            } else {
-                Toast.makeText(this, "Enter a proper email (e.g. name@mail.com)", Toast.LENGTH_SHORT).show()
-            }
+        // 3. Setup Add Device Toggle
+        val pairCard = findViewById<LinearLayout>(R.id.pairCard)
+        findViewById<View>(R.id.btnAddDevice).setOnClickListener {
+            pairCard.visibility = if (pairCard.visibility == View.VISIBLE) View.GONE else View.VISIBLE
         }
     }
 }
