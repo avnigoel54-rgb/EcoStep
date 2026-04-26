@@ -22,15 +22,29 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <!-- EcoTrack Package Activities -->
+        <activity android:name="com.example.ecotrack.TipsActivity" />
+        <activity android:name="com.example.ecotrack.QrSetupActivity" />
+        <activity android:name="com.example.ecotrack.ManualSetupActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.ecotrack.DashboardActivity"
+            android:exported="false" />
+
+        <!-- Sign-In Screen (Launcher) -->
+        <activity
+            android:name="com.example.ecotrack.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Compose Goals Screen -->
+        <activity
+            android:name="com.example.myapplication.MainActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

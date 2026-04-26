@@ -66,6 +66,9 @@ dependencies {
     // Icons (Add this for DarkMode/LightMode icons)
     implementation("androidx.compose.material:material-icons-extended")
 
+    // MPAndroidChart for data visualization
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
     // Debug (for preview)
     debugImplementation("androidx.compose.ui:ui-tooling")
 

@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="eco_dark">#0A1A14</color>
+    <color name="eco_green">#58B38D</color>
+    <color name="glass_white">#1AFFFFFF</color>
+
+    <!-- UI Colors -->
+    <color name="screen_background">#F7F4EE</color>
+    <color name="top_bar_background">#FFFDF9</color>
+    <color name="bottom_bar_background">#FFFDF9</color>
+
+    <color name="text_primary">#1F4334</color>
+    <color name="text_heading">#0F4E4A</color>
+    <color name="text_secondary">#6C8D7E</color>
+
+    <color name="icon_tint">#5E816F</color>
+    <color name="icon_accent">#3E8B67</color>
+
+    <color name="status_on">#2FA56A</color>
+    <color name="status_off">#91A59A</color>
+
+    <color name="nav_active">#2E8B62</color>
+    <color name="nav_inactive">#7A9388</color>
+
+    <color name="button_primary_text">#FFFFFF</color>
+    <color name="button_secondary_text">#315C4B</color>
+    <color name="add_button_icon">#FFFFFF</color>
+
+    <color name="shape_primary">#3E8B67</color>
+    <color name="shape_primary_soft">#DFF0E8</color>
+    <color name="shape_muted">#EFE8DD</color>
+    <color name="shape_panel">#FFFDFC</color>
+    <color name="shape_card">#FFFFFF</color>
+    <color name="shape_border">#E8E1D6</color>
+
+    <!-- Compatibility for Sign-in -->
+    <color name="screen_bg">#F7F4EE</color>
+    <color name="main_text">#1F4334</color>
+    <color name="card_bg">#FFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
