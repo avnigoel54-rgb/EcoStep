@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        // Fixed: Use the correct sign-in layout
+        setContentView(R.layout.activity_sign_in)
 
         val btnPersonal = findViewById<Button>(R.id.btnPersonal)
         val btnOrg = findViewById<Button>(R.id.btnOrg)
