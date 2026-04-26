@@ -1,19 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    id("com.google.gms.google-services")
 }
 
 android {
     namespace = "com.example.ecotrack"
-    // Downgraded to 35 because 36 is currently experimental/unsupported by many libraries
-    compileSdk = 35
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
         applicationId = "com.example.ecotrack"
         minSdk = 24
-        // Downgraded to 35 to match compileSdk
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -29,34 +27,21 @@ android {
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
     }
 }
 
 dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-
-    // Firebase - Updated to stable BoM and non-ktx library (ktx is now built-in)
-    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
-    implementation("com.google.firebase:firebase-database")
-
-    // QR Scanning Library
-    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }
