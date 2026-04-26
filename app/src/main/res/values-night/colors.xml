@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Core App Colors -->
+    <color name="screen_bg">#081A14</color>
+    <color name="main_text">#EAF7F0</color>
+    <color name="card_bg">#132B22</color>
+    <color name="eco_green">#58B38D</color>
+    <color name="eco_dark">#081A14</color>
+
+    <!-- UI Colors (Devices Screen) -->
     <color name="screen_background">#081A14</color>
     <color name="top_bar_background">#12251D</color>
     <color name="bottom_bar_background">#12251D</color>
@@ -27,9 +35,4 @@
     <color name="shape_panel">#132B22</color>
     <color name="shape_card">#132B22</color>
     <color name="shape_border">#1D3A2F</color>
-
-    <!-- Compatibility for Sign-in -->
-    <color name="screen_bg">#081A14</color>
-    <color name="main_text">#EAF7F0</color>
-    <color name="card_bg">#132B22</color>
 </resources>
