@@ -3,13 +3,13 @@ package com.example.ecotrack
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.Switch
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.R
+import com.example.ecotrack.R
 import com.example.myapplication.MainActivity as ComposeActivity
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.util.Locale
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -31,12 +32,15 @@ class DashboardActivity : AppCompatActivity() {
         // 1. Dynamic Welcome Message
         val userName = intent.getStringExtra("USER_NAME") ?: "User"
         val tvWelcome = findViewById<TextView>(R.id.tvWelcomeMessage)
-        tvWelcome.text = "Welcome back, ${userName.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }} 👋"
+        tvWelcome.text = "Welcome back, ${userName.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }} 👋"
 
         // 2. Setup Device List
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewDevices)
         deviceList = mutableListOf()
-        adapter = DeviceAdapter(deviceList)
+        adapter = DeviceAdapter(deviceList) { position ->
+            adapter.removeDevice(position)
+            updatePieChart()
+        }
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
@@ -54,16 +58,15 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         // 5. Theme Toggle Logic
-        val themeSwitch = findViewById<Switch>(R.id.themeSwitch)
-        val isNightMode = resources.configuration.uiMode and
-                android.content.res.Configuration.UI_MODE_NIGHT_MASK ==
-                android.content.res.Configuration.UI_MODE_NIGHT_YES
-        themeSwitch.isChecked = isNightMode
-        themeSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
+        val btnThemeToggle = findViewById<ImageButton>(R.id.btnThemeToggle)
+        btnThemeToggle.setOnClickListener {
+            val isNightMode = resources.configuration.uiMode and
+                    android.content.res.Configuration.UI_MODE_NIGHT_MASK ==
+                    android.content.res.Configuration.UI_MODE_NIGHT_YES
+            if (isNightMode) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             }
         }
 
@@ -74,11 +77,6 @@ class DashboardActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_home -> {
                     // Already on Dashboard (Home)
-                    true
-                }
-                R.id.nav_devices -> {
-                    // Navigate to old UI MainActivity (Devices)
-                    startActivity(Intent(this, com.example.ecotrack.MainActivity::class.java))
                     true
                 }
                 R.id.nav_analytics -> {
@@ -110,7 +108,7 @@ class DashboardActivity : AppCompatActivity() {
                 entries.add(PieEntry(value, device.name))
             }
             val totalKwh = deviceList.sumOf { it.power.replace(" kWh", "").toDoubleOrNull() ?: 0.0 }
-            pieChart.centerText = "Total\n${String.format("%.1f", totalKwh)} kWh"
+            pieChart.centerText = "Total\n${String.format(Locale.getDefault(), "%.1f", totalKwh)} kWh"
         }
 
         val dataSet = PieDataSet(entries, "")

@@ -22,9 +22,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Paste a setup code in this format: Name|Type|Power|on"
+            android:text="Scan a device QR code or enter a setup code manually."
             android:textColor="@color/text_secondary"
             android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnLaunchScanner"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_primary_button"
+            android:text="📷 Open QR Scanner"
+            android:textAllCaps="false"
+            android:textColor="@color/button_primary_text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:text="--- OR ---"
+            android:textColor="@color/text_secondary" />
 
         <EditText
             android:id="@+id/etQrCode"
@@ -32,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@drawable/bg_secondary_button"
-            android:hint="Example: Smart Fan|Appliance|1.2 kWh|on"
+            android:hint="Manual format: name=...;type=...;"
             android:padding="16dp"
             android:textColor="@color/text_primary"
             android:textColorHint="@color/text_secondary" />
@@ -42,10 +61,10 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/bg_primary_button"
-            android:text="Add Device From Code"
+            android:background="@drawable/bg_secondary_button"
+            android:text="Add Device From Text"
             android:textAllCaps="false"
-            android:textColor="@color/button_primary_text"
+            android:textColor="@color/button_secondary_text"
             android:textStyle="bold" />
 
         <Button
@@ -59,4 +78,3 @@
             android:textColor="@color/button_secondary_text" />
     </LinearLayout>
 </ScrollView>
-

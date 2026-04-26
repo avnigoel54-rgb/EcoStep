@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.R
+import com.example.ecotrack.R
 import com.example.myapplication.MainActivity as ComposeActivity
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         // 1. Setup Device List
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewDevices)
-        val devices = listOf(
+        val devices = mutableListOf(
             Device("Smart Fridge", "Kitchen", "1.2 kWh", true),
             Device("AC Unit", "Living Room", "2.5 kWh", true),
             Device("Electric Oven", "Kitchen", "0.0 kWh", false),

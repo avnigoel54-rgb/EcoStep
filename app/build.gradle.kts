@@ -1,14 +1,15 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.myapplication"
+    namespace = "com.example.ecotrack"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.myapplication"
+        applicationId = "com.example.ecotrack"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -47,11 +48,11 @@ android {
 
 dependencies {
     // Core Android
-    implementation("androidx.core:core-ktx:1.12.0")
+    implementation(libs.androidx.core.ktx)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
     // Material Components
-    implementation("com.google.android.material:material:1.11.0")
+    implementation(libs.material)
 
     // Compose
     implementation("androidx.activity:activity-compose:1.8.0")
@@ -63,15 +64,22 @@ dependencies {
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.foundation:foundation-layout")
     
-    // Icons (Add this for DarkMode/LightMode icons)
+    // Icons
     implementation("androidx.compose.material:material-icons-extended")
 
     // MPAndroidChart for data visualization
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
-    // Debug (for preview)
+    // QR Code Scanner
+    implementation(libs.zxing.android.embedded)
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation("com.google.firebase:firebase-database")
+
+    // Debug
     debugImplementation("androidx.compose.ui:ui-tooling")
 
     // Testing
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(libs.junit)
 }
