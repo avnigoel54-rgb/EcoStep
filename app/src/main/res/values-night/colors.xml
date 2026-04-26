@@ -27,4 +27,9 @@
     <color name="shape_panel">#132B22</color>
     <color name="shape_card">#132B22</color>
     <color name="shape_border">#1D3A2F</color>
+
+    <!-- Compatibility for Sign-in -->
+    <color name="screen_bg">#081A14</color>
+    <color name="main_text">#EAF7F0</color>
+    <color name="card_bg">#132B22</color>
 </resources>
